@@ -1,6 +1,6 @@
 class GalleriesController < ApplicationController
   def index
-    @photo = Gallery.first
+    @photo = Gallery.all
   end
 
   def new 
@@ -13,6 +13,14 @@ class GalleriesController < ApplicationController
     flash[:notice] = "Image Added"
     redirect_to galleries_path
     else 
+    render :new
+    end
+  end
+
+  def destroy 
+    @photo = Gallery.find(id: params[:id])
+    if @photo.destroy
+    flash[:notice] = "Photo was successfully deleted"
     render :new
     end
   end
