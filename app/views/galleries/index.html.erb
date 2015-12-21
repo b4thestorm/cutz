@@ -1,6 +1,12 @@
+<center>
+<h1>Classic Cuts...</h1>
+</center>
+<hr>
+
 <div class="grid">
   <% @photo.each do |photo|%>
-  <%= image_tag attachment_url(photo, :hairstyle_image, :fill, 300, 300, format: "jpg")%>
+    <%= image_tag attachment_url(photo, :hairstyle_image, :fill, 300, 300, format: "jpg")%>
   <%end%>
-<!--  -->
 </div>
+
+
