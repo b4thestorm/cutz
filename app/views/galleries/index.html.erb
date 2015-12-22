@@ -5,7 +5,9 @@
 
 <div class="grid">
   <% @photo.each do |photo|%>
+  <div class="grid-item">
     <%= image_tag attachment_url(photo, :hairstyle_image, :fill, 300, 300, format: "jpg")%>
+  </div>
   <%end%>
 </div>
 
