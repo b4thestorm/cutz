@@ -1,12 +1,11 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
- 
-
-  $('.grid').masonry({
-    itemSelector: '.grid-item',
-    columnWidth: 300,
-    isOriginLeft: false,
-  });
+//Place all the behaviors and hooks related to the matching controller here.
+//All this logic will automatically be available in application.js.
+//You can use CoffeeScript in this file: http://coffeescript.org/
 
   
+$(document).ready(function(){
+  $('.grid').masonry({
+    itemSelector: '.grid-item',
+    isFitWidth: true
+  })
+})
