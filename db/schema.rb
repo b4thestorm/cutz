@@ -11,11 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160616155431) do
+=======
+ActiveRecord::Schema.define(version: 20151220150659) do
+>>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "appointments", force: :cascade do |t|
     t.datetime "schedule_day"
     t.datetime "schdule_time"
@@ -24,12 +29,15 @@ ActiveRecord::Schema.define(version: 20160616155431) do
     t.datetime "updated_at",   null: false
   end
 
+=======
+>>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7
   create_table "galleries", force: :cascade do |t|
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "hairstyle_image_id"
   end
 
+<<<<<<< HEAD
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -50,4 +58,6 @@ ActiveRecord::Schema.define(version: 20160616155431) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+=======
+>>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7
 end
