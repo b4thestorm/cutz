@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  has_many :appointments, foreign_key: :barber_id 
 
   #TODO: ADD Friendly Id to obfuscate user id
 

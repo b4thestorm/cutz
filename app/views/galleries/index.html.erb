@@ -4,7 +4,7 @@
 <div class="grid photo-wall">
   <% @photo.each do |photo|%>
   <div class="grid-item">
-  <%= link_to new_barber_appointment_path(:style_id => photo.id) do %>
+    <%= link_to new_barber_appointment_path(:style_id => photo.id) do %>
     <%= image_tag attachment_url(photo, :hairstyle_image, :fill, 300, 300, format: "jpg")%>
   <%end%>
   </div>

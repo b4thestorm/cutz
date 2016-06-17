@@ -1,5 +1,6 @@
 class BarberController < ApplicationController
   def show
+    @barber = User.where(id: params[:id]).take
   end
 
   def find
