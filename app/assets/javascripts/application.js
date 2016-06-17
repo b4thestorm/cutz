@@ -13,8 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-datepicker
-
->>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7
 //= require bootstrap.min
 //= require masonry/masonry.min
 //= require turbolinks
@@ -24,4 +22,3 @@
     $('.datepicker').datepicker();
   });
 
->>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7

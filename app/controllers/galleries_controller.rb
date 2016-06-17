@@ -4,10 +4,6 @@ class GalleriesController < ApplicationController
   end
 
   def new 
-<<<<<<< HEAD
-
-=======
->>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7
     @photo = Gallery.new
   end 
 
@@ -15,10 +11,7 @@ class GalleriesController < ApplicationController
     @photo = Gallery.new(photo_params)
     if @photo.save 
     flash[:notice] = "Image Added"
-<<<<<<< HEAD
     redirect_to barber_galleries_path
-=======
->>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7
     else 
     render :new
     end

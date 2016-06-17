@@ -36,7 +36,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-<<<<<<< HEAD
     addressable (2.4.0)
     annotate (2.7.1)
       activerecord (>= 3.2, < 6.0)
@@ -56,13 +55,11 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-=======
     arel (6.0.3)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (8.2.1)
->>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7
     coderay (1.1.0)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -73,7 +70,6 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.0)
     debug_inspector (0.0.2)
-<<<<<<< HEAD
     devise (3.5.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -82,13 +78,10 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-=======
->>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7
     domain_name (0.5.25)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.6.0)
-<<<<<<< HEAD
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
@@ -96,8 +89,6 @@ GEM
       railties (>= 3.0.0)
     faker (1.4.3)
       i18n (~> 0.5)
-=======
->>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     http-cookie (1.0.2)
@@ -111,11 +102,8 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
-<<<<<<< HEAD
     launchy (2.4.3)
       addressable (~> 2.3)
-=======
->>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -131,10 +119,7 @@ GEM
     netrc (0.11.0)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
-<<<<<<< HEAD
     orm_adapter (0.5.0)
-=======
->>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7
     pg (0.18.4)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -179,16 +164,12 @@ GEM
     refile-mini_magick (0.2.0)
       mini_magick (~> 4.0)
       refile (~> 0.5)
-<<<<<<< HEAD
     responders (2.1.1)
       railties (>= 4.2.0, < 5.1)
-=======
->>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-<<<<<<< HEAD
     rspec-core (3.2.3)
       rspec-support (~> 3.2.0)
     rspec-expectations (3.2.1)
@@ -206,8 +187,6 @@ GEM
       rspec-mocks (~> 3.2.0)
       rspec-support (~> 3.2.0)
     rspec-support (3.2.2)
-=======
->>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7
     sass (3.4.20)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -244,27 +223,20 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.1)
-<<<<<<< HEAD
     warden (1.2.6)
       rack (>= 1.0)
-=======
->>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7
     web-console (2.2.1)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
-<<<<<<< HEAD
     xpath (2.0.0)
       nokogiri (~> 1.3)
-=======
->>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-<<<<<<< HEAD
   annotate
   bootstrap-datepicker-rails
   byebug
@@ -276,22 +248,13 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
-=======
-  byebug
-  coffee-rails (~> 4.1.0)
-  jbuilder (~> 2.0)
-  jquery-rails
->>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7
   masonry-rails
   pg
   pry
   rails (= 4.2.1)
   refile
   refile-mini_magick
-<<<<<<< HEAD
   rspec-rails
-=======
->>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
@@ -300,8 +263,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-<<<<<<< HEAD
    1.10.6
-=======
-   1.10.0.rc
->>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7

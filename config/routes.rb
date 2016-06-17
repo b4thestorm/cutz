@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
   
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
   root to: "home#index"
@@ -10,8 +9,8 @@ Rails.application.routes.draw do
   post 'barber/find'
   get 'galleries/new'
   post 'galleries/create'
-=======
->>>>>>> 6947862d140fc2f3316bf6bc6da77f5f3df23af7
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
