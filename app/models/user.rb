@@ -32,4 +32,6 @@ class User < ActiveRecord::Base
     self.unique_code = SecureRandom.hex(3)
     self.save
   end
+
+  
 end

@@ -1,8 +1,22 @@
 
 <div class="profile_headline container">
 <h1>Profile: <%=@barber.email%></h1>
-</div>
 </hr>
+<br>
+<%=link_to 'Authorize Google Calendar', schedule_gcal_redirect_path , class: 'btn btn-primary'%><br><br>
+<%=link_to 'Create New Barber Calendar', schedule_new_calendar_path, class: 'btn btn-primary' %><br><br>
+<%=link_to 'Get Calendar Id', schedule_get_calendar_id_path, class: 'btn btn-primary'%><br><br>
+<%=link_to 'add appointment try', schedule_add_appointment_path, class: 'btn btn-primary'%>
 
-<%=button_to 'Set Schedule'%>
+</div>
+<div>
+  <h2> Client Appointment Requests</h2>
+  <ul>
+    <% @clients.each do |appt|%>
+    <li><%= appt.start_time %> - <%= appt.end_time %> - <%= appt.schedule_day %></li>
+    <%end%>
+  </ul>
+</div>
+
+
 

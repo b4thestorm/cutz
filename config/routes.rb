@@ -6,7 +6,13 @@ Rails.application.routes.draw do
     resources :galleries, except: [:new, :create]
     resources :appointments, only: [:new, :create]
   end
+  resources :schedule, only: [:new, :create]
+  get 'schedule/gcal_redirect'
+  get 'schedule/cutz_callback'
+  get 'schedule/new_calendar'
+  get 'schedule/add_appointment'
   post 'barber/find'
+  get 'schedule/get_calendar_id'
   get 'galleries/new'
   post 'galleries/create'
 

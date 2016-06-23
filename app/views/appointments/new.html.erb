@@ -3,17 +3,22 @@
     <h3 class="panel-title">Create New Barber Appointment</h3>
   </div>
   <div class="panel-body">
-     <%=form_for @appt, url: "/barber/#{@barber_id}/appointments" do |f|%>
+     <%= form_for Appointment.new, url: "/barber/#{@barber_id}/appointments" do |f|%>
       <div class='control-group'>
           <%=f.label 'Schedule Day'%>
           <%=f.date_select :schedule_day, class: 'datepicker'%>
       </div>
       <div>
-          <%=f.label 'Schedule Time'%>
-          <%=f.time_select :schdule_time , {:ampm => true}%>
+          <%=f.label 'Start Time'%>
+          <%=f.time_select :start_time , {:ampm => true}%>
       </div>
-          <%= hidden_field_tag 'barber_id', '#' %>
-          <%=f.submit 'create new appt', class: 'btn btn-primary'%>
+      <div>
+          <%=f.label 'End Time'%>
+          <%=f.time_select :end_time , {:ampm => true}%>
+      </div>
+          <%=f.hidden_field(:barber_id, :value => @barber_id)  %>
+
+          <%=f.submit 'Request Appointment', class: 'btn btn-primary'%>
       <%end%>
   </div>
 </div>
