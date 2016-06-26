@@ -17,6 +17,8 @@ gem 'devise'
 gem 'bootstrap-datepicker-rails'
 gem 'google-api-client', '0.9'
 gem 'figaro'
+gem 'materialize-sass'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

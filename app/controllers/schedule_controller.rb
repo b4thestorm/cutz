@@ -43,11 +43,14 @@ require 'time'
   end
 
   def add_appointment 
+
    schedule = Schedule.new
-   event = schedule.add_appointment
-   service = schedule.authorized_calendar_call(session[:access_token])
-   
-   service.insert_event(current_user.gcalendar_id, event)
+   if params[:app_id]
+      event = schedule.add_appointment(params[:appt_id], current_user.id)
+      service = schedule.authorized_calendar_call(session[:access_token])
+      service.insert_event(current_user.gcalendar_id, event)
+   end
+
    redirect_to barber_path(current_user.id)
   end
 

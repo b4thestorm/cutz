@@ -50,7 +50,9 @@ require 'google/apis/calendar_v3'
   end
 
   #TODO pass the appointment object into this method and parse it
-  def add_appointment
+  def add_appointment(appt_id, user)
+    appt = Appointment.where(id: appt_id).take
+    
     event = Google::Apis::CalendarV3::Event.new({
      'summary':'Haircut Appointment',
      'location':'800 Howard St., San Francisco, CA 94103',
@@ -66,8 +68,17 @@ require 'google/apis/calendar_v3'
       })
     event
   end 
+ 
+  #Pass an authenticated service object in and make a call parse the return object for the  
+  #event id
+  def get_event_id(service)
+    
+  end 
 
-  def cancel_appointment;end
+  #pass the event id, authenticated service object and then the barbers calendar id. 
+  def cancel_appointment
+    # service.delete_event(calendar_id, event_id )
+  end
   
 
 end
