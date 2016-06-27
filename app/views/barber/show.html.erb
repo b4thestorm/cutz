@@ -1,7 +1,9 @@
 
 <div class="profile_headline container">
 <br><br><br>
-<h4> Client Appointments</h4>
+<h4> My Appointments</h4>
+<p class="badge"> Barber Code <span><%=@barber.unique_code%></span><p>
+
 </hr>
   <div class='row'>
     <div class='col l3'>
@@ -23,6 +25,7 @@
 
 </div>
 
+<!-- TODO: fix the barber sign up flow and adding appointment process as to not need links-->
 <br><br>
 <%link_to 'Create New Barber Calendar', schedule_new_calendar_path, class: 'btn btn-primary' %><br><br>
 <%link_to 'Get Calendar Id', schedule_get_calendar_id_path, class: 'btn btn-primary'%><br><br>
