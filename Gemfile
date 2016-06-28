@@ -18,6 +18,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'google-api-client', '0.9'
 gem 'figaro'
 gem 'materialize-sass'
+gem 'chronic'
 
 
 # Use ActiveModel has_secure_password

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'schedule/add_appointment'
   get 'schedule/get_calendar_id'
   
+  resources :calendar 
+  
   get 'galleries/new'
   post 'galleries/create'
 
