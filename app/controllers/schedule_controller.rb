@@ -45,7 +45,7 @@ require 'time'
   def add_appointment 
 
    schedule = Schedule.new
-   if params[:app_id]
+   if params[:appt_id]
       event = schedule.add_appointment(params[:appt_id], current_user.id)
       service = schedule.authorized_calendar_call(session[:access_token])
       service.insert_event(current_user.gcalendar_id, event)

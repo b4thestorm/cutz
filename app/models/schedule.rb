@@ -52,23 +52,27 @@ require 'google/apis/calendar_v3'
   #TODO pass the appointment object into this method and parse it
   def add_appointment(appt_id, user)
     appt = Appointment.where(id: appt_id).take
-    
+    from = appt.fix_start_time
+    to = appt.fix_end_time
+
     event = Google::Apis::CalendarV3::Event.new({
      'summary':'Haircut Appointment',
      'location':'800 Howard St., San Francisco, CA 94103',
      'description':'Dark Caesar',
      'start':{
-            'date_time': DateTime.parse('2016-06-23T09:00:00-07:00'),
+            'date_time': from,
             'time_zone': 'America/New_York'
              },
      'end':{
-            'date_time': DateTime.parse('2016-06-23T17:00:00-07:00'),
+            'date_time':  to,
             'time_zone': 'America/New_York'
            }
       })
     event
   end 
- 
+  
+  #"2007-06-06T15:00:00.000Z"
+
   #Pass an authenticated service object in and make a call parse the return object for the  
   #event id
   def get_event_id(service)
