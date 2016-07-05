@@ -137,8 +137,6 @@ GEM
       mime-types (>= 1.16, < 3)
     masonry-rails (0.2.4)
       railties
-    materialize-sass (0.97.6)
-      sass (~> 3.3)
     memoist (0.14.0)
     method_source (0.8.2)
     mime-types (2.99)
@@ -250,11 +248,14 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    stripe (1.43.1)
+      rest-client (~> 1.4)
+    stripe-rails (0.3.1)
+      rails (>= 3)
+      stripe
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
-    turbolinks (2.5.3)
-      coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uber (0.0.15)
@@ -293,7 +294,6 @@ DEPENDENCIES
   jquery-rails
   launchy
   masonry-rails
-  materialize-sass
   pg
   pry
   rails (= 4.2.1)
@@ -303,7 +303,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
-  turbolinks
+  stripe-rails
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
 

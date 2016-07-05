@@ -1,18 +1,19 @@
 Rails.application.routes.draw do
   
-  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
+  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'registration' }
   root to: "home#index"
   resources :barber do  
     resources :galleries, except: [:new, :create]
     resources :appointments, only: [:new, :create]
   end
+  resources :subscribers 
   resources :schedule, only: [:new, :create]  
   get 'schedule/gcal_redirect'
   get 'schedule/cutz_callback'
   get 'schedule/new_calendar'
   get 'schedule/add_appointment'
   get 'schedule/get_calendar_id'
-  
+  get 'schedule/booked_appointments'
   resources :calendar 
   
   get 'galleries/new'

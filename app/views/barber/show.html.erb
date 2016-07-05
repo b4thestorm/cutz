@@ -14,7 +14,7 @@
     <div class='col l9'>
     <% @clients.each do |appt|%>
       <div class="card" >
-      <p> Appointment Start Time: <%= appt.start_time.strftime('%I:%M %P')%></p> 
+      <p> Appointment Start Time: <%= appt.start_time%></p> 
       <%= link_to schedule_add_appointment_path(appt_id: appt.id) do %>
       <p> Requested Day: <%=appt.schedule_day.strftime('%m-%A-%Y')%></p>
       <%end%>

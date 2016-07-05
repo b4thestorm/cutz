@@ -11,13 +11,11 @@
 // about supported directives.
 //
 //= require jquery
-//= require materialize-sprockets
-//= require materialize/extras/nouislider
 //= require jquery_ujs
 //= require bootstrap-datepicker
 //= require bootstrap.min
 //= require masonry/masonry.min
-//= require turbolinks
+//= require devise.js.coffee
 //= require_tree .
 
  $(document).ready(function(){

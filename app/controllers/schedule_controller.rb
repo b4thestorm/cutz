@@ -1,6 +1,7 @@
 class ScheduleController < ApplicationController
 require 'google/apis/calendar_v3'  
-require 'time'
+require 'uri'
+require 'net/http'
 
   def new 
 
@@ -54,7 +55,14 @@ require 'time'
    redirect_to barber_path(current_user.id)
   end
 
-  
+ def booked_appointments
+   schedule = Schedule.new
+   body = schedule.booked_appointments(current_user)
+   service = schedule.authorized_calendar_call(session[:access_token])
+   list = service.query_freebusy(body)
+
+   redirect_to barber_path(current_user.id)
+ end 
 
 
 end

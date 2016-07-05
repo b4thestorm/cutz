@@ -17,6 +17,9 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  unique_code            :string
+#  gcalendar_id           :string
+#  subscribed             :boolean
+#  stripeid               :string
 #
 
 class User < ActiveRecord::Base
@@ -26,11 +29,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :appointments, foreign_key: :barber_id 
 
+  validates :stripeid, presence: true
   #TODO: ADD Friendly Id to obfuscate user id
 
   def generate_unique_code 
     self.unique_code = SecureRandom.hex(3)
-    self.save
   end
 
   

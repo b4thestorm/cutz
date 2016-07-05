@@ -8,6 +8,11 @@
 #  barber_id    :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  start_time   :datetime
+#  end_time     :datetime
+#  summary      :string
+#  description  :string
+#  location     :string
 #
 
 class Appointment < ActiveRecord::Base

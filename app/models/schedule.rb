@@ -1,5 +1,15 @@
+# == Schema Information
+#
+# Table name: schedules
+#
+#  id         :integer          not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Schedule < ActiveRecord::Base
 require 'google/apis/calendar_v3'
+require 'net/http'
   #TODO: Extract methods from the schedule controller to this class 
   #TODO: Make the add appointments method programmatic
 
@@ -71,7 +81,19 @@ require 'google/apis/calendar_v3'
     event
   end 
   
-  #"2007-06-06T15:00:00.000Z"
+   ###### Barber Available Time Algorithm 
+
+   def booked_appointments(user)
+     item_array = Array.new
+     item_array << user.gcalendar_id
+     body = Google::Apis::CalendarV3::FreeBusyRequest.new 
+     body.items = item_array
+     body.time_min = "2016-06-29T13:00:00z"
+     body.time_max = "2016-06-29T21:00:00z"
+     body
+   end
+
+   
 
   #Pass an authenticated service object in and make a call parse the return object for the  
   #event id

@@ -10,15 +10,17 @@ gem 'jquery-rails'
 gem "refile", require: "refile/rails"
 gem "refile-mini_magick"
 gem 'masonry-rails'
-gem 'turbolinks'
+# gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'bootstrap-datepicker-rails'
 gem 'google-api-client', '0.9'
 gem 'figaro'
-gem 'materialize-sass'
+#gem 'materialize-sass'
 gem 'chronic'
+gem 'stripe-rails'
+
 
 
 # Use ActiveModel has_secure_password
