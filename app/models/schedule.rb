@@ -97,8 +97,7 @@ require 'net/http'
 
   #Pass an authenticated service object in and make a call parse the return object for the  
   #event id
-  def get_event_id(service)
-    
+  def get_event_id(service)    
   end 
 
   #pass the event id, authenticated service object and then the barbers calendar id. 

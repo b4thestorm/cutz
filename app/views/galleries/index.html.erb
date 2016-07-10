@@ -1,6 +1,11 @@
 
 <div class="container">
+
   <h1 class="user-action">Choose your Hairstyle</h1>
+  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+    Referral Question 
+  </button>
+  
 <div class="grid photo-wall">
   <% @photo.each do |photo|%>
   <div class="grid-item">
@@ -12,3 +17,27 @@
 </div>
 </div>
 
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel"> Were you Referred?</h4>
+      </div>
+      <div class="modal-body">
+          <div class="input-group">
+          <%= form_for @referral , url: barber_referrals_question_path do |f|%>
+          <%= f.radio_button :state, 'true' %>
+          <%= label :state, 'yes' %>
+          <%= f.radio_button :state, 'false' %>
+          <%= label :state, 'no' %>
+          <%=submit_tag 'submit', class: 'btn btn-primary'%>
+          <%end%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

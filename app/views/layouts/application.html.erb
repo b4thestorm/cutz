@@ -7,6 +7,11 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
   <%= csrf_meta_tags %>
+   <style type="text/css">
+    .flash-message {
+      margin-top: 50px;  
+    }
+  </style>
 </head>
 <body>
 <div class="navbar navbar-default navbar-fixed-top ">
@@ -33,6 +38,13 @@
   </div>
 </div>
 
+<%flash.each do |type, message| %>
+<%binding.pry%>
+  <div class="alert alert-<%= type %> fade in flash-message">
+    <button class="close" data-dismiss="alert">×</button>
+    <%= message %>
+  </div>
+<% end %>
 <%= yield %>
 
 </body>

@@ -1,10 +1,12 @@
 class GalleriesController < ApplicationController
   def index
     @photo = Gallery.all
+    @referral = Referral.new
   end
 
   def new 
     @photo = Gallery.new
+
   end 
 
   def create 

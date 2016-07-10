@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :barber do  
     resources :galleries, except: [:new, :create]
     resources :appointments, only: [:new, :create]
+    post 'referrals/question'
   end
   resources :subscribers 
   resources :schedule, only: [:new, :create]  
