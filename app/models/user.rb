@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   has_many :appointments, foreign_key: :barber_id 
   has_many :referrals, foreign_key: :barber_id
 
-  validates :stripeid, presence: true
+  # validates :stripeid, presence: true
   #TODO: ADD Friendly Id to obfuscate user id
 
   def generate_unique_code 

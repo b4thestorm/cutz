@@ -1,5 +1,5 @@
 <div class="col-md-12 uploader">
-  <%= form_for @photo , url: '/barber/:barber_id/galleries' do |form| %>
+  <%= form_for @photo , url:  galleries_create_path do |form| %>
   <%= form.attachment_field :hairstyle_image %>
   </br>
   <%= form.submit "Upload Styles"%>

@@ -6,12 +6,13 @@
 
 </hr>
   <div class='row'>
-    <div class='col l3'>
+    <div class='col-md-4'>
     <%=link_to 'Authorize Google Calendar', schedule_gcal_redirect_path %><br>
     <%=link_to 'Appointment Request', barber_path(current_user.id, appointment_type: 'request_all') %></br>
-    <%=link_to 'Booked Appointments', barber_path(current_user.id, appointment_type: 'booked_appointments') %>
+    <%=link_to 'Booked Appointments', barber_path(current_user.id, appointment_type: 'booked_appointments') %><br>
+    <%=link_to 'Authorize Free Busy', '/auth/cronofy' %></br>
     </div>
-    <div class='col l9'>
+    <div class='col-md-8'>
     <% @clients.each do |appt|%>
       <div class="card" >
       <p> Appointment Start Time: <%= appt.start_time%></p> 

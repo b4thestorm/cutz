@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources :barber do  
     resources :galleries, except: [:new, :create]
-    resources :appointments, only: [:new, :create]
+    resources :appointments, only: [:index ,:new, :create]
     post 'referrals/question'
   end
   resources :subscribers 
@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   get 'schedule/new_calendar'
   get 'schedule/add_appointment'
   get 'schedule/get_calendar_id'
-  get 'schedule/booked_appointments'
+
+  get "/auth/:provider/callback", to: "auth#callback"
   resources :calendar 
   
   get 'galleries/new'

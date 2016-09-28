@@ -13,7 +13,7 @@ class GalleriesController < ApplicationController
     @photo = Gallery.new(photo_params)
     if @photo.save 
     flash[:notice] = "Image Added"
-    redirect_to barber_galleries_path
+    redirect_to root_path
     else 
     render :new
     end

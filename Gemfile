@@ -17,10 +17,12 @@ gem 'devise'
 gem 'bootstrap-datepicker-rails'
 gem 'google-api-client', '0.9'
 gem 'figaro'
-
+gem 'cronofy'
+gem 'omniauth-cronofy'
 #gem 'materialize-sass'
 gem 'chronic'
 gem 'stripe-rails'
+
 
 gem 'puma'
 

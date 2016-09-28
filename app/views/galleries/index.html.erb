@@ -1,11 +1,12 @@
 
 <div class="container">
 
-  <h1 class="user-action">Choose your Hairstyle</h1>
-  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+  <h1 class="user-action">Choose your Hairstyle</h1><hr>
+<!--   <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
     Referral Question 
-  </button>
-  
+  </button></br> -->
+  <%=link_to 'Fade', '#', class: 'showbutton' %> | <%=link_to 'Caeser', '#', class: 'showbutton' %> | <%=link_to 'MoHawk', '#', class: 'showbutton' %> | <%=link_to '' %>
+
 <div class="grid photo-wall">
   <% @photo.each do |photo|%>
   <div class="grid-item">

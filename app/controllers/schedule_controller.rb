@@ -43,6 +43,7 @@ require 'net/http'
     redirect_to barber_path(current_user.id)
   end
 
+  #TODO Fix the time.
   def add_appointment 
 
    schedule = Schedule.new
@@ -55,14 +56,8 @@ require 'net/http'
    redirect_to barber_path(current_user.id)
   end
 
- def booked_appointments
-   schedule = Schedule.new
-   body = schedule.booked_appointments(current_user)
-   service = schedule.authorized_calendar_call(session[:access_token])
-   list = service.query_freebusy(body)
-
-   redirect_to barber_path(current_user.id)
- end 
+ 
+ 
 
 
 end
