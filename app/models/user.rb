@@ -38,5 +38,20 @@ class User < ActiveRecord::Base
     self.unique_code = SecureRandom.hex(3)
   end
 
+
+  def barber_availability
+    available_times = []
+    starting = self.start_time.to_s.split(' ')
+    result_1 = "#{starting[0]}T#{starting[1]}z"
+    ending = self.end_time.to_s.split(' ')
+    result_2 = "#{ending[0]}T#{ending[1]}z"
+    available_times.push(result_1) 
+    available_times.push(result_2)
+    available_times
+  end
+
+
+  #ISO-8601 - "2016-10-29T00:00:00"   "2016-10-29T08:00:00"
+
   
 end

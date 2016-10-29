@@ -6,3 +6,67 @@
   top: 100px;
 
 }
+.appointment {
+  padding: 10px 42px 10px 10px;
+  background: #f8f8f8;
+  color: #444;
+  border: 1px solid #aaa;
+  border-radius: 0;
+  width: 500px;
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
+}
+
+ select {
+  padding: 10px 42px 10px 10px;
+  background: #f8f8f8;
+  color: #444;
+  border: 1px solid #aaa;
+  border-radius: 0;
+  width: 500px;
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+}
+ select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #444;
+}
+ select::-ms-expand {
+  display: none;
+}
+ select:before {
+  content: '';
+  right: 5px;
+  top: -7px;
+  width: 30px;
+  height: 33px;
+  background: #f8f8f8;
+  position: absolute;
+  pointer-events: none;
+  display: block;
+}
+ select { position: relative; }
+ select:after {
+  content: '>';
+  font: 16px Consolas, monospace;
+  color: #444;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  right: 2px;
+  top: -3px;
+  border-bottom: 1px solid #aaa;
+  position: absolute;
+  pointer-events: none;
+  width: 35px;
+  padding: 0 0 5px 0;
+  text-indent: 14px;
+}

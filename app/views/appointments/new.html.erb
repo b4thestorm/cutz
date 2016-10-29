@@ -1,24 +1,57 @@
-<div class="panel panel-default appt-form col-md-8">
-  <div class="panel-heading">
-    <h3 class="panel-title">Create New Barber Appointment</h3>
-  </div>
-  <div class="panel-body">
-     <%= form_for Appointment.new, url: "/barber/#{@barber_id}/appointments" do |f|%>
-      <div class='control-group'>
-          <%=f.label 'Schedule Day'%>
-          <%=f.date_select :schedule_day, class: 'datepicker'%>
-      </div>
-      <div>
-          <%=f.label 'Start Time'%>
-          <%=f.time_select :start_time , {:ampm => true}%>
-      </div>
-      <div>
-          <%=f.label 'End Time'%>
-          <%=f.time_select :end_time , {:ampm => true}%>
-      </div>
-          <%=f.hidden_field(:barber_id, :value => @barber_id)  %>
 
-          <%=f.submit 'Request Appointment', class: 'btn btn-primary'%>
+  <div class="panel panel-default appt-form col-md-8">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Select from Joes Available Slots</h3>
+    </div>
+      <div class="panel-body">
+    <center>
+
+
+      <%= form_for @appointment, url: "/barber/#{@barber_id}/appointments" do |f| %>
+
+        <div class='control-group'> 
+          <%= f.text_field :name , :size => '61', placeholder: "First Name", class:'appointment'%> 
+        </div></br>
+        <div class='control-group' >
+        
+        <%=select_tag 'Dates', options_for_select( AppointmentForm::DATES), {:include_blank => 'Select A Day', id: 'date' } %>
+     
+        </div></br>
+        <div class='control-group' >
+          <%= f.select  :start_time, options_for_select(convert_time(@free_times)), {:include_blank => 'Available Times'} %>
+        </div></br>
+        <div class='control-group' >
+          <%= f.text_area :summary, :size => '60', placeholder: "Notes"%>
+        </div>
+        <%=f.submit 'Request Appointment', class: 'btn-primary'%>
       <%end%>
+
+    </center>
+
+    </div>
+    <p class='result'></p>
+
   </div>
-</div>
+<script>
+   $( "#date" ).on('click', function() {
+     var chosenDay = document.getElementById("date");
+      var strUser = chosenDay.options[chosenDay.selectedIndex].text;
+
+        // pass the day to controller to get time values for start time select box
+         $.get( "/barber/2/appointments/new", function( data ) {
+             $( ".result" ).html( data );
+          });
+   });
+
+   function availableTimes() {
+       var availableTime;
+       var chosenDay = document.getElementById("date").value;
+       console.log(chosenDay);
+               // if (array.hasOwnProperty(headingFont)) {    
+               //     availableTime = array[headingFont];
+               //  }  
+
+       // document.getElementById("b_font").value = availableTime;
+    }
+</script>
