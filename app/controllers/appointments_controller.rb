@@ -4,11 +4,18 @@ before_action :check_token, only: :index
   def new
     @barber_id = params[:barber_id]
     @style_id = params[:style_id]
+
+    options = {from: "2016-10-29T08:00:00".to_time , to: "2016-10-29T20:00:00".to_time , tzid: "America/New_York" }
+    @response = @cronofy.free_busy(options)
+    busy_list = @response.to_a
+
     @appointment = AppointmentForm.new
     times = Appointment.new
     barber  = times.get_barber(params[:barber_id])
-    @free_times = times.generate_free_time(barber)
-    
+    # @free_times = times.generate_free_time(barber)
+    multi_list = appointments.generate_multi_busy(busy_list) 
+    free_list = appointments.generate_free_time(barber)
+    @free_times = appointments.subtract_busy_time(free_list, multi_list)
     
     # respond_to do |format|
     #     format.json  { render :json => @company.to_json }
@@ -30,21 +37,8 @@ before_action :check_token, only: :index
 
  #/:barber_id/appointments
   def index
-       #make this data dynamic 
-       # "2016-10-29T08:00:00" 
-       # "2016-10-29T18:00:00"
-
-      # current = User.where(email: current_user.email).take
-      options = {from: "2016-10-29T08:00:00".to_time , to: "2016-10-29T20:00:00".to_time , tzid: "America/New_York" }
-      @response = @cronofy.free_busy(options)
-      busy_list = @response.to_a
-
-
       appointments = Appointment.new
       barber = User.where(email: 'arnoldsander@gmail.com').take
-      free_list = appointments.generate_free_time(barber)
-      appointments.subtract_busy_time(free_list, busy_list)
-
 
    # redirect_to barber_path(current_user.id)
   end

@@ -41,10 +41,36 @@ def get_barber(barber_id)
   @barber = User.where(id: barber_id).take
 end
 
-#generate a list of times
-def generate_free_time(barber) 
+
+ 
+#last method before completing the Form object
+# How to Remove the times: 
+#grab the start and end time. check each value in the free time array 
+#against the start and end range. Remove the free times that are within the
+#range. Return the new free times array.
+
+  def subtract_busy_time(free, busy)   
+   list1 = free_times_to_integer(free)
+   list2 = busy_times_to_integer(busy)
+   beta_times = []
+  
+   list2.each do |x|
+     list1.map do |y|                         
+      beta_times.push(y) if (x[0]..x[1]).cover?(y) == true
+     end 
+   end
+   real_times = remove_times(list1, beta_times)
+  end
+
+  def generate_multi_busy(tstr) 
+     fir = tstr.map {|x| x['start'].time}
+     sec = tstr.map {|x| x['end'].time}
+     multi = fir.zip(sec)
+  end
+
+  #generate a list of times
+  def generate_free_time(barber) 
     # t = Time.parse('Wed Dec 09 16:05:00 -0600 2009')
-    # t + 15.minutes
    times = barber.barber_availability
    start_time = times[0].to_time
    arr = []
@@ -53,33 +79,21 @@ def generate_free_time(barber)
      start_time += 15.minutes
    end
    return arr
- end 
- 
-#last method before completing the Form object
+  end 
 
-# How to Remove the times: 
-#grab the start and end time. check each value in the free time array 
-#against the start and end range. Remove the free times that are within the
-#range. Return the new free times array.
 
-  #subtract_busy_time (free, busy) 
-  def subtract_busy_time   
-   list1 = free_times_to_integer(free)
-   list2 = busy_times_to_integer
-   beta_times = []
-  
-   list2.each do |x|
-     list1.map do |y|  
-      beta_times.push(y) if (x[0]..x[1]).cover?(y) == true
-     end 
-   end
-   real_times = remove_times(list1, beta_times)
- #TODO: Parse Cronofy Busy Times into multidimensional array and pass into busy_times_to_integer
-   # list1.select! do |x| 
-   #  busy.start.time
-   #  busy.end.time
-   # end
+  def free_times_to_integer(tstr)
+   free_times = tstr.map! {|x| x.to_time.to_i} 
   end
+
+  def busy_times_to_integer(multi_busy)
+   # multi_busy = [["2016-10-29 13:00:00 UTC", "2016-10-29 13:30:00 UTC"],["2016-10-29 15:00:00 UTC", "2016-10-29 15:30:00 UTC"], 
+   #  ["2016-10-29 16:00:00 UTC", "2016-10-29 16:30:00 UTC"], ["2016-10-29 17:00:00 UTC","2016-10-29 17:30:00 UTC"]]
+   fir = multi_busy.map {|x| x[0].to_time.to_i}
+   sec = sec = multi_busy.map {|x|  x[1].to_time.to_i}
+   las = fir.zip(sec)
+  end
+
 
   def remove_times(list1, list2)
     list2.each do |x|
@@ -88,17 +102,4 @@ def generate_free_time(barber)
     list1
   end
   
-  def free_times_to_integer(*tstr)
-   free_times = tstr.map! {|x| x.to_time.to_i} 
-  end
-
-  def busy_times_to_integer
-   multi_busy = [["2016-10-29 13:00:00 UTC", "2016-10-29 13:30:00 UTC"],["2016-10-29 15:00:00 UTC", "2016-10-29 15:30:00 UTC"], 
-    ["2016-10-29 16:00:00 UTC", "2016-10-29 16:30:00 UTC"], ["2016-10-29 17:00:00 UTC","2016-10-29 17:30:00 UTC"]]
-   fir = multi_busy.map {|x| x[0].to_time.to_i}
-   sec = sec = multi_busy.map {|x|  x[1].to_time.to_i}
-   las = fir.zip(sec)
-  end
-
-
 end
