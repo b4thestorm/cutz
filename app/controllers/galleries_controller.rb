@@ -1,7 +1,11 @@
 class GalleriesController < ApplicationController
   def index
-    @photo = Gallery.all
     @referral = Referral.new
+      if params[:items] == 'grid-view'
+         @photo = Gallery.all 
+        elsif 
+           @photos = ['Haircut', 'Shapeup', 'Hot Towel Shave', 'Fade' , 'Beard Trim'] 
+      end
   end
 
   def new 

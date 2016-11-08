@@ -9,13 +9,14 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
   <%= csrf_meta_tags %>
    <style type="text/css">
+  
     .flash-message {
       margin-top: 50px;  
     }
   </style>
 </head>
 <body>
-<div class="navbar navbar-default navbar-fixed-top ">
+<div class="navbar navbar-default navbar-fixed-top  navbar-custom">
     <div class="container">
       <div class="navbar-header">
       <%= link_to 'Client Book', root_path, class: "navbar-brand", id: 'brand-logo' %>

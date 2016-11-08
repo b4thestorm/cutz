@@ -11,7 +11,7 @@ class Schedule < ActiveRecord::Base
 require 'google/apis/calendar_v3'
 require 'net/http'
 require 'curb'
-  #TODO: Extract methods from the schedule controller to this class 
+ 
   #TODO: Make the add appointments method programmatic
 
   def calendar_redirect 

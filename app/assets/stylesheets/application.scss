@@ -10,12 +10,14 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require jquery-ui
  *= require bootstrap-theme.min
  *= require bootstrap.min
  *= require bootstrap-datepicker
  *= require_self
  *= require_tree .
  */
+
 
 
 
@@ -26,3 +28,9 @@
   bottom: 0px;
 }
 
+
+
+ .navbar-custom { 
+    background-color: #A52A2A !important;
+    border-color: #030033;
+ }

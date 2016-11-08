@@ -1,23 +1,41 @@
 
 <div class="container">
 
-  <h1 class="user-action">Choose your Hairstyle</h1><hr>
+  <h1 class="user-action">Hairstyle</h1><hr>
 <!--   <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
     Referral Question 
   </button></br> -->
-  <%=link_to 'Fade', '#', class: 'showbutton' %> | <%=link_to 'Caeser', '#', class: 'showbutton' %> | <%=link_to 'MoHawk', '#', class: 'showbutton' %> | <%=link_to '' %>
+<!--   <link_to 'Fade', '#', class: 'showbutton' %> | < link_to 'Caeser', '#', class: 'showbutton' %> | <link_to 'MoHawk', '#', class: 'showbutton' >  -->
+ <%=link_to 'item-view', barber_galleries_path(params[:barber_id])%> |
+ <strike><a href='#' id="mytooltip" data-toggle='tooltip' data-placement="top" title="Coming Soon">grid view</a></strike>
+ <!-- barber_galleries_path(params[:barber_id], items: 'grid-view' -->
 
+<% if @photo %>
 <div class="grid photo-wall">
   <% @photo.each do |photo|%>
   <div class="grid-item">
-    <%= link_to new_barber_appointment_path(:style_id => photo.id) do %>
+    <%= link_to new_barber_appointment_path(:style_id => photo.id, :q => 'today' ) do %>
     <%= image_tag attachment_url(photo, :hairstyle_image, :fill, 300, 300, format: "jpg")%>
     <%end%>
   </div>
   <%end%>
 </div>
 </div>
+  <%else%>
+      </br></br>
+      <center>
+     <% @photos.each do |item| %>
+      <div class='box'>
+      <%=link_to new_barber_appointment_path(style: item, q: 'today') do %>
+      <center><%= item %></center>
+      <%end%>
+      </div>
+      </br>
 
+      <%end%>
+      </center>
+
+<%end%>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -42,3 +60,17 @@
     </div>
   </div>
 </div>
+<script type='text/javascript'> 
+
+$(function () {
+  $('#mytooltip').tooltip()
+})
+
+$('.box').on('mouseenter', function(){
+    $(this).fadeOut('slow', function() {
+      $(this).fadeIn('slow', function() {
+      });
+    });
+})
+
+</script>

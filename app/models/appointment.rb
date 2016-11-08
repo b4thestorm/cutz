@@ -25,7 +25,7 @@ belongs_to :barber, class_name: 'User', foreign_key: :barber_id
   time = Chronic.parse("#{self.start_time}")
   final = time.to_s.split(' ')
   result = "#{final[0]}T#{final[1]}z"
-  result
+  result 
  end 
 
  def fix_end_time
@@ -34,9 +34,29 @@ belongs_to :barber, class_name: 'User', foreign_key: :barber_id
   result = "#{final[0]}T#{final[1]}z"
   result
  end
+
+def create_options(user, str)
+    barber = get_barber(user)
+    r = Chronic.parse("#{str}").to_s.split(" ")
+    from = "#{r[0]}T#{barber.start_time.strftime("%H:%M")}".to_time
+    to = "#{r[0]}T#{barber.end_time.strftime("%H:%M")}".to_time
+    options = {from: from, to: to, tzid: "America/New_York"}
+end
   
- #cpu heavy 
- #get the barbers availability for each day and generate free times based on that range
+ def convert_time(arr)
+    arr.map! {|x| Time.at(x).utc.strftime("%I:%M %p") }
+ end
+
+#TODO: send in time
+def with_respect_to_date(response, id, date)
+      barber  =  get_barber(id)
+      multi_list = generate_multi_busy(response)#busy_list 
+      free_list = generate_free_time(barber, date)
+      pre_times = subtract_busy_time(free_list, multi_list)
+      free_times = convert_time(pre_times)    
+end
+
+
 def get_barber(barber_id)
   @barber = User.where(id: barber_id).take
 end
@@ -69,18 +89,30 @@ end
   end
 
   #generate a list of times
-  def generate_free_time(barber) 
+  def generate_free_time(barber, date) 
     # t = Time.parse('Wed Dec 09 16:05:00 -0600 2009')
    times = barber.barber_availability
-   start_time = times[0].to_time
+   new_times = make_it_respect_the_day(times, date)
+   start_time = new_times[0].to_time
    arr = []
-   until start_time > times[1].to_time
+   until start_time > new_times[1].to_time
      arr.push(start_time.to_s) 
      start_time += 15.minutes
    end
    return arr
   end 
 
+  def make_it_respect_the_day(times, date)
+     available_times = []
+     start_time = times[0][times[0].index("T"), times[0].length]
+     end_time = times[1][times[1].index("T"), times[1].length]
+     date_part = Chronic.parse("#{date}").to_s.split(" ")[0]
+     new_start_time = "#{date_part}"+"#{start_time}"
+     new_end_time = "#{date_part}"+"#{end_time}"
+     available_times.push(new_start_time)
+     available_times.push(new_end_time)
+     available_times
+  end
 
   def free_times_to_integer(tstr)
    free_times = tstr.map! {|x| x.to_time.to_i} 

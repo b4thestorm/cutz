@@ -70,3 +70,17 @@
   padding: 0 0 5px 0;
   text-indent: 14px;
 }
+
+
+.showbutton {
+  color: black;
+  border: 1px solid red;
+  display: inline-block;
+  margin-bottom: 25px;
+  width: 200px;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  opacity: 0.5;
+  transition: color 0.3s ease-out, background-color 0.3s ease-out;
+}
