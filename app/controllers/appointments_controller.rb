@@ -37,10 +37,10 @@ before_action :check_token, only: :new
   end
 
   def create
-    @appointment = AppointmentForm.new(appointment_params)
+    @appointment = AppointmentForm.new(appointment_params.merge(barber_id: params[:barber_id]))
     if @appointment.valid?
       @appointment.register
-      flash[:notice] = 'Request was sent'
+        flash[:notice] = 'Request was sent'
       redirect_to root_path
     else 
       flash[:notice] = 'Something went wrong'
@@ -61,7 +61,7 @@ before_action :check_token, only: :new
 private 
 
   def appointment_params
-    params.require(:appointment_form).permit(:name, :start_time, :summary)
+    params.require(:appointment_form).permit(:name, :start_time, :summary, :barber_id)
   end  
 
   def check_token 

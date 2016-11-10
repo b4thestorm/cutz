@@ -1,7 +1,7 @@
 class ScheduleController < ApplicationController
-require 'google/apis/calendar_v3'  
-require 'uri'
-require 'net/http'
+# require 'google/apis/calendar_v3'  
+# require 'uri'
+# require 'net/http'
 
   def new 
 
@@ -43,7 +43,7 @@ require 'net/http'
     redirect_to barber_path(current_user.id)
   end
 
-  #TODO Fix the time.
+  #GOOGLE API CALENDAR
   def add_appointment 
 
    schedule = Schedule.new
@@ -56,8 +56,15 @@ require 'net/http'
    redirect_to barber_path(current_user.id)
   end
 
- 
- 
+  def get_list
+    barber = current_user
+    cron = Cronofy::Client.new(access_token: barber.cronofy_access_token)
+    schedule = Schedule.new
+    request = schedule.list_of_calendars(cron)
+    current_user.gcalendar_id = request["calendar_id"]
+    current_user.save
+    redirect_to barber_path(current_user.id)
+  end 
 
 
 end

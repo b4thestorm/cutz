@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'schedule/new_calendar'
   get 'schedule/add_appointment'
   get 'schedule/get_calendar_id'
+  get 'schedule/get_list'
 
   get "/auth/:provider/callback", to: "auth#callback"
   resources :calendar 
