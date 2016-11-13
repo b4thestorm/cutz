@@ -34,3 +34,15 @@
     background-color: #A52A2A !important;
     border-color: #030033;
  }
+
+@media (min-width:320px) { 
+  #brand-logo {
+    padding: 0px;
+    margin-top: 10px;
+    position: relative;
+    bottom: 0px;
+  }
+  
+
+
+ }

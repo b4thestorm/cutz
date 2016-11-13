@@ -67,10 +67,12 @@ $(function () {
 })
 
 $('.box').on('mouseenter', function(){
-    $(this).fadeOut('slow', function() {
-      $(this).fadeIn('slow', function() {
-      });
+    $(this).fadeIn('slow', function() {
+      $(this).css("background-color", "yellow");
     });
+})
+$('.box').on('mouseleave', function(){
+    $(this).css("background-color",  " #d3d3d3");
 })
 
 </script>

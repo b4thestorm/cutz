@@ -4,5 +4,5 @@ module AppointmentsHelper
     arr.map! {|x| Time.at(x).utc.strftime("%I:%M %p") }
   end
 
-
+ 
 end
