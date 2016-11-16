@@ -41,19 +41,32 @@ h1 {
   transition: color 0.3s ease-out, background-color 0.3s ease-out;
 }
 
+p {
+  font-family: 'Anonymous Pro', serif;
+  font-size: 30px;
+  font-color: black;
+}
+
+span.anchor a {
+ text-decoration: none;  
+ color: black;
+}
+
 .box {
   height: 60px;
   width: 50%;
   background-color: #d3d3d3;
 }
 
-a {
-  text-decoration: none;
-}
 
-@media (min-width:320px) { 
+
+@media (min-width: 385px) { 
   .box {
-    width: 300px;
+   width: 300px;
   }
+ }
 
-}
+
+  
+
+

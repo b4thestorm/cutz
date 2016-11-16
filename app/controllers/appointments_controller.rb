@@ -61,7 +61,7 @@ before_action :check_token, only: :new
 private 
 
   def appointment_params
-    params.require(:appointment_form).permit(:name, :start_time, :summary, :barber_id)
+    params.require(:appointment_form).permit(:name, :start_time, :phone, :email, :barber_id)
   end  
 
   def check_token 

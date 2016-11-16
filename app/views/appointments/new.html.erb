@@ -23,21 +23,27 @@
     transition: color 0.3s ease-out, background-color 0.3s ease-out;
   }
 }
+ .gsfi {
+   width: 95%;
+ }
+ select {
+  width: 95%;  
+ }
+
 </style>
 
-<div class="panel panel-default appt-form col-md-8">
-   <!--  <div class="panel-heading">
-      <h3 class="panel-title">Select from Joes Available Slots</h3>
-    </div> -->
-<div class='show'>
+<div class="appt-form col-md-4 col-md-offset-4">
+  <center>
+  <div class='show '>
     <%=link_to 'Monday', new_barber_appointment_path(barber_id: @barber_id, q: 'monday', style: params[:style]) , class: 'showbutton'%>
     <%=link_to 'Tuesday',new_barber_appointment_path(barber_id: @barber_id, q: 'tuesday', style: params[:style]), class: 'showbutton' %>
   <%=link_to 'Wednesday',new_barber_appointment_path(barber_id: @barber_id, q: 'wednesday', style: params[:style]), class: 'showbutton' %>
     <%=link_to 'Thursday',new_barber_appointment_path(barber_id: @barber_id, q: 'thursday', style: params[:style]), class: 'showbutton' %>
     <%=link_to 'Friday',new_barber_appointment_path(barber_id: @barber_id, q: 'friday', style: params[:style]), class: 'showbutton' %>
     <%=link_to 'Saturday',new_barber_appointment_path(barber_id: @barber_id, q: 'saturday', style: params[:style]), class: 'showbutton'%>
-</div>
-    <center>
+  </div>
+  </center>
+  <center>
   <div class="selection">
   <%=link_to 'M', new_barber_appointment_path(barber_id: @barber_id, q: 'monday', style: params[:style]) , class: 'day'%>
   <%=link_to 'T',new_barber_appointment_path(barber_id: @barber_id, q: 'tuesday', style: params[:style]), class: 'day' %>
@@ -46,29 +52,35 @@
   <%=link_to 'F',new_barber_appointment_path(barber_id: @barber_id, q: 'friday', style: params[:style]), class: 'day' %>
   <%=link_to 'Sat',new_barber_appointment_path(barber_id: @barber_id, q: 'saturday', style: params[:style]), class: 'day'%>
   </div>
-    </center>
-    <center>
-      <div class="panel-body">
-    
+  </center>
+
+     
       <%= form_for @appointment, url: "/barber/#{@barber_id}/appointments" do |f| %>
 
         <div class='control-group'> 
-          <%= f.text_field :name , :size => '61', placeholder: "First Name", class:'appointment'%> 
+          <%= f.text_field :name , placeholder: "First Name", class: 'appointment gsfi'%> 
         </div></br>
         <div class='control-group' >
-          <%= f.select  :start_time, options_for_select(@free_times), {:include_blank => 'Available Times'} %>
+          <%= f.select  :start_time, options_for_select(@free_times), {:include_blank => 'Available Times', class: 'gsfi'} %>
         </div></br>
         <div class='control-group' >
-          <%= f.text_area :summary, :size => '60', placeholder: "Notes"%>
-        </div>
+          <%= f.text_field :phone, placeholder: "212-123-1234", class: 'appointment gsfi'%>
+        </div></br>
+         <div class='control-group' >
+          <%= f.text_field :email, placeholder: "client@greatcut.com", class: 'appointment gsfi'%>
+        </div>   
+
+          </br>
+           <center>
             <%=f.submit 'Rerserve Appointment', class: 'btn btn-primary'%>
+           </center>
       <%end%>
 
-    </div>
-    </center>
 
 
-  </div>
+
+
+</div>
 <script>
    // $( "#date" ).on('click', function() {
    //   var chosenDay = document.getElementById("date");

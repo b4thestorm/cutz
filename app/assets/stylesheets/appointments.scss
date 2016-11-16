@@ -41,6 +41,7 @@
  select::-ms-expand {
   display: none;
 }
+/*
  select:before {
   content: '';
   right: 5px;
@@ -52,7 +53,10 @@
   pointer-events: none;
   display: block;
 }
+*/
  select { position: relative; }
+
+/*
  select:after {
   content: '>';
   font: 16px Consolas, monospace;
@@ -70,7 +74,7 @@
   padding: 0 0 5px 0;
   text-indent: 14px;
 }
-
+*/
 
 .showbutton {
   color: black;

@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container col-xs-6 col-md-12">
 
   <h1 class="user-action">Hairstyle</h1><hr>
 <!--   <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
@@ -26,9 +26,9 @@
       <center>
      <% @photos.each do |item| %>
       <div class='box'>
-      <%=link_to new_barber_appointment_path(style: item, q: 'today') do %>
-      <center><%= item %></center>
-      <%end%>
+      <span class='anchor'><%=link_to new_barber_appointment_path(style: item, q: 'today') do %>
+      <center><p><%= item %></p></center>
+      <%end%><span>
       </div>
       </br>
 
@@ -68,7 +68,7 @@ $(function () {
 
 $('.box').on('mouseenter', function(){
     $(this).fadeIn('slow', function() {
-      $(this).css("background-color", "yellow");
+      $(this).css("background-color", "#bcd8bc");
     });
 })
 $('.box').on('mouseleave', function(){
