@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
   # validates :stripeid, presence: true
   #TODO: ADD Friendly Id to obfuscate user id
-
+  #287a04
   def generate_unique_code 
     self.unique_code = SecureRandom.hex(3)
   end
