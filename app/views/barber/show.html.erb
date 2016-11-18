@@ -13,14 +13,19 @@
     <%=link_to 'Authorize Free Busy', '/auth/cronofy' %></br>
     </div>
     <div class='col-md-8'>
-    <% @clients.each do |appt|%>
-      <div class="card" >
-      <p> Appointment Start Time: <%= appt.start_time%></p> 
-      <%= link_to schedule_add_appointment_path(appt_id: appt.id) do %>
-      <p> Requested Day: <%=appt.schedule_day.strftime('%m-%A-%Y')%></p>
+      <%if @clients == []%>
+         <p>There are no appointments yet</p>
+      <%else%>
+      <% @clients.each do |appt|%>
+        <div class="card">
+          <p> Appointment Start Time: <%= appt.start_time%></p> 
+          <%= link_to schedule_add_appointment_path(appt_id: appt.id) do %>
+          <p> Requested Day: <%=appt.schedule_day.strftime('%m-%A-%Y')%></p>
       <%end%>
-    </div>
-    <%end%>
+        </div>
+        <%end%>
+      <%end%>
+ 
     <div>
   </div>
 

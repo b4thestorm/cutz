@@ -2,7 +2,6 @@ class BarberController < ApplicationController
   def show
     @barber = User.where(id: params[:id]).take
     @clients = @barber.appointments.all
-    binding.pry
     if params[:appointment_type] == 'request_all'
       @clients = @barber.appointments.all
     elsif params[:appointment_type] == 'booked_appointments'
