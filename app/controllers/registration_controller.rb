@@ -7,7 +7,6 @@ class RegistrationController < Devise::RegistrationsController
   end 
 
   def create
-    binding.pry
     @user = User.new(sign_up_params)
     
     token = params[:stripeToken]
