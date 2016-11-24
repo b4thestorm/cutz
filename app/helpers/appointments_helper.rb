@@ -1,7 +1,7 @@
 module AppointmentsHelper
   require 'chronic'
   def convert_time(arr)
-    arr.map! {|x| Time.at(x).utc.strftime("%I:%M %p") }
+    arr.map! {|x| x.to_datetime.utc.strftime("%m/%d  %I:%M %P") }
   end
 
  

@@ -61,13 +61,13 @@
           <%= f.text_field :name , placeholder: "First Name", class: 'appointment gsfi'%> 
         </div></br>
         <div class='control-group' >
-          <%= f.select  :start_time, options_for_select(@free_times), {:include_blank => 'Available Times', class: 'gsfi'} %>
+          <%= f.select  :start_time, options_for_select(convert_time(@free_times)), {:include_blank => 'Available Times', class: 'gsfi'} %>
         </div></br>
         <div class='control-group' >
           <%= f.text_field :phone, placeholder: "212-123-1234", class: 'appointment gsfi'%>
         </div></br>
          <div class='control-group' >
-          <%= f.text_field :email, placeholder: "client@greatcut.com", class: 'appointment gsfi'%>
+          <%= f.text_field :email, placeholder: "Email", class: 'appointment gsfi'%>
         </div>   
 
           </br>
