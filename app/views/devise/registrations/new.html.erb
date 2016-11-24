@@ -5,7 +5,7 @@
 <!-- Where to set stripe publishable key-->
 <div class="container">
 
-<%= form_for( resource, as: resource_name, url: registration_path(resource_name), id: 'new_subscription')  do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), id: 'new_subscription')  do |f| %>
   <%= devise_error_messages! %>
   <%= hidden_field_tag :stripeToken, nil, id: :stripe_card_token %>
   <div class="field">

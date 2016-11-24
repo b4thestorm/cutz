@@ -22,7 +22,7 @@ module Cutz
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    config.stripe.secret_key = ENV['STRIPE_TEST_KEY']
+    config.stripe.secret_key = ENV['STRIPE_SECRET_KEY']
     config.stripe.publishable_key = ENV['STRIPE_PUBLISHABLE_KEY']
     config.stripe.debug_js = false
 
