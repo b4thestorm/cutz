@@ -5,13 +5,35 @@
 #  id         :integer          not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#
-
 class Schedule < ActiveRecord::Base
-# require 'google/apis/calendar_v3'
+# require 'google/apis/calendar_v2'
 require 'net/http'
 
- 
+
+  def add_appointment(appt_id, appt, barber)
+    calendar_id = get_list(barber)
+    calendar_id = barber.gcalendar_id
+    u = Appointment.where(id: appt_id).take
+    event_data = { "event_id": u.id, 
+    "summary": 'Haircut', 
+    "start": u.start_time,
+    "end": u.start_time + (30 * 60),
+    "location": {
+      description: "Haircut"
+      }
+    }  
+   cron = Cronofy::Client.new(access_token: barber.cronofy_access_token)
+   cron.upsert_event(calendar_id, event_data)
+  end
+
+  def get_list(barber)
+      cron = Cronofy::Client.new(access_token: barber.cronofy_access_token)
+      schedule = Schedule.new
+      request = schedule.list_of_calendars(cron)
+      barber.gcalendar_id = request["calendar_id"]
+      barber.save
+  end 
+
   #TODO: Make the add appointments method programmatic
   def list_of_calendars(cron)
     begin 
@@ -19,12 +41,13 @@ require 'net/http'
       barber_calendar = calendars.select! {|x| x["calendar_id"] if x["calendar_name"] == "Barber Calendar"}.reject {|e| e.nil?}
       barber_id = barber_calendar[0]
     rescue 
-       return { :error => "Sorry, No Data returned. Try Again"}
+       return { :error => "Sorry, Something went wrong. Try Again"}
     end 
   end
 
-  def add_new_appointment
-    
+    def cancel_appointment(barber, appt_id)
+    cron = Cronofy::Client.new(access_token: barber.cronofy_access_token)
+    cron.delete_event(barber.gcalendar_id, appt_id)
   end
 
   # def calendar_redirect 
@@ -114,10 +137,7 @@ require 'net/http'
   #Pass an authenticated service object in and make a call parse the return object for the  
   #event id
 
-  #pass the event id, authenticated service object and then the barbers calendar id. 
-  def cancel_appointment
-    # service.delete_event(calendar_id, event_id )
-  end
+
   
 
 end

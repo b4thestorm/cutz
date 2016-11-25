@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'schedule/cutz_callback'
   get 'schedule/new_calendar'
   get 'schedule/add_appointment'
+  get 'schedule/cancel_appointment'
   get 'schedule/get_calendar_id'
   get 'schedule/get_list'
 

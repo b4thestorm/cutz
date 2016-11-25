@@ -126,7 +126,6 @@ end
    las = fir.zip(sec)
   end
 
-
   def remove_times(list1, list2)
     list2.each do |x|
       list1.delete(x)

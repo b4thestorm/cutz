@@ -2,7 +2,7 @@ class ScheduleController < ApplicationController
 # require 'google/apis/calendar_v3'  
 # require 'uri'
 # require 'net/http'
-
+before_action 
   def new 
 
   end
@@ -43,28 +43,32 @@ class ScheduleController < ApplicationController
     redirect_to barber_path(current_user.id)
   end
 
-  #GOOGLE API CALENDAR
   def add_appointment 
-
-   schedule = Schedule.new
-   if params[:appt_id]
-      event = schedule.add_appointment(params[:appt_id], current_user.id)
-      service = schedule.authorized_calendar_call(session[:access_token])
-      service.insert_event(current_user.gcalendar_id, event)
-   end
-
-   redirect_to barber_path(current_user.id)
+    schedule = Schedule.new
+      if params[:appt_id]
+        event = schedule.add_appointment(params[:appt_id], current_user.id, current_user)
+      end
+        flash[:notice] = 'Appointment was Added'
+        redirect_to barber_path(current_user.id)
   end
 
-  def get_list
-    barber = current_user
-    cron = Cronofy::Client.new(access_token: barber.cronofy_access_token)
+  def cancel_appointment
     schedule = Schedule.new
-    request = schedule.list_of_calendars(cron)
-    current_user.gcalendar_id = request["calendar_id"]
-    current_user.save
-    redirect_to barber_path(current_user.id)
+      if params[:appt_id]
+        event = schedule.cancel_appointment(current_user, params[:appt_id])
+      end 
+       flash[:notice] = 'Appointment was cancelled'
+       redirect_to barber_path(current_user.id)
   end 
+  # def get_list
+  # barber = current_user
+  #     cron = Cronofy::Client.new(access_token: barber.cronofy_access_token)
+  #     schedule = Schedule.new
+  #     request = schedule.list_of_calendars(cron)
+  #     current_user.gcalendar_id = request["calendar_id"]
+  #     current_user.save
+  # redirect_to barber_path(current_user.id)
+  # end 
 
 
 end
