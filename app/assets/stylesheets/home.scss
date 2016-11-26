@@ -35,6 +35,37 @@
   opacity: 0.5;
   transition: color 0.3s ease-out, background-color 0.3s ease-out;
 }
+.bar {
+  height: 150px;
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+
+.bar p {
+  font-size: 15px;
+}
+
+.footer {
+  height: 200px;
+  width: 100%;
+  background-color: #800000;   
+}
+
+.footer p {
+  font-size: 20px;
+  top: 90px;
+  padding: 0px;
+  margin-bottom: 0px;
+  position: relative;
+  color: black;
+}
+
+.footer h2 {
+  color: white;
+  margin: 0px;
+  padding: 0px;
+}
 
 body {
   background-color: lt gray;
