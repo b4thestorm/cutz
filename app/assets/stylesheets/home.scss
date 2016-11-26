@@ -11,6 +11,30 @@
   position: relative;
   
 }
+.showbox {
+  position: relative;
+  padding: 0px 0px 5px 0px;
+  height: 500px;
+  background-image: url(shop_barber.jpg);
+  background-size: 100%;
+  background-position: top center;
+  background-attachment: fixed;
+  box-shadow: inset 0px 0px 0 2000px rgba(0,0,0,0.5);
+}
+
+
+.showbutton {
+  color: black;
+  border: 1px solid white;
+  display: inline-block;
+  margin-bottom: 25px;
+  width: 200px;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  opacity: 0.5;
+  transition: color 0.3s ease-out, background-color 0.3s ease-out;
+}
 
 body {
   background-color: lt gray;
