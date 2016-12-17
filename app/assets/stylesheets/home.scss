@@ -9,7 +9,7 @@
 
 .brand-card {
   position: relative;
-  
+
 }
 .showbox {
   position: relative;
@@ -34,6 +34,9 @@
   text-decoration: none;
   opacity: 0.5;
   transition: color 0.3s ease-out, background-color 0.3s ease-out;
+  top: 350px;
+  position: relative;
+  z-index: 99999;
 }
 .bar {
   height: 150px;
@@ -49,7 +52,7 @@
 .footer {
   height: 200px;
   width: 100%;
-  background-color: #800000;   
+  background-color: #800000;
 }
 
 .footer p {
@@ -69,10 +72,10 @@
 
 body {
   background-color: lt gray;
-  
+
 }
 
-@media (min-width:320px) { 
+@media (min-width:320px) {
   .brand-card {
     padding: 0px;
     margin-top: 50px;
