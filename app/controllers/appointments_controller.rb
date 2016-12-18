@@ -8,7 +8,7 @@ before_action :check_token, only: :new
     # @style_id = params[:style_id]
     time = params[:q]
     @style = params[:style]  # options = {from: "2016-10-29T08:00:00".to_time , to: "2016-10-29T20:00:00".to_time , tzid: "America/New_York" }
-    if params[:q] 
+    if params[:q]
       #####################################################################
       @appointment = AppointmentForm.new
       appointments = Appointment.new
@@ -18,10 +18,10 @@ before_action :check_token, only: :new
         rescue
            cronofy = Cronofy::Client.new( refresh_token: barber.cronofy_refresh_token)
            token = cronofy.refresh_access_token
-            #Save new data to User 
+            #Save new data to User
             barber.cronofy_access_token =  token.access_token
             barber.cronofy_refresh_token = token.refresh_token
-            barber.expiration = token.expires_at 
+            barber.expiration = token.expires_at
             barber.save
         #send new authorized cronofy object
         @cronofy = Cronofy::Client.new(access_token: barber.cronofy_access_token)
@@ -42,10 +42,10 @@ before_action :check_token, only: :new
       @appointment.register
         flash[:notice] = 'Request was sent'
       redirect_to root_path
-    else 
+    else
       flash[:notice] = 'Something went wrong'
       render :new
-    end 
+    end
   end
 
  #/:barber_id/appointments
@@ -54,28 +54,30 @@ before_action :check_token, only: :new
    # redirect_to barber_path(current_user.id)
   end
 
+   def welcome
+     
+   end
 
-  
 
- 
-private 
+
+private
 
   def appointment_params
     params.require(:appointment_form).permit(:name, :start_time, :phone, :email, :barber_id, :style)
-  end  
+  end
 
-  def check_token 
+  def check_token
      # user = User.where(email: current_user.email).take
-     barber = User.where(id: params[:barber_id]).take 
-     time = DateTime.strptime("#{barber.expiration}",'%s')  
-     if time > Time.now 
+     barber = User.where(id: params[:barber_id]).take
+     time = DateTime.strptime("#{barber.expiration}",'%s')
+     if time > Time.now
       #Use the refresh token to initiate an object
         cronofy = Cronofy::Client.new( refresh_token: barber.cronofy_refresh_token)
         token = cronofy.refresh_access_token
-            #Save new data to User 
+            #Save new data to User
             barber.cronofy_access_token =  token.access_token
             barber.cronofy_refresh_token = token.refresh_token
-            barber.expiration = token.expires_at 
+            barber.expiration = token.expires_at
             barber.save
         #send new authorized cronofy object
 
@@ -83,7 +85,7 @@ private
       else
       #initiate an Object
          @cronofy = Cronofy::Client.new( access_token: barber.cronofy_access_token)
-      end 
+      end
   end
 
 

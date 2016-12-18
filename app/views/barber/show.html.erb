@@ -1,40 +1,43 @@
+<style>
 
-<div class="profile_headline container">
-<br>
-<h4> My Appointments</h4>
-<p class="badge"> Barber Code <span><%=@barber.unique_code%></span><p>
-
-</hr>
-  <div class='row'>
-    <div class='col-md-4'>
-    <!-- <link_to 'Authorize Google Calendar', schedule_gcal_redirect_path ><br> -->
-    <%=link_to 'Appointment Request', barber_path(current_user.id, appointment_type: 'request_all') %></br>
-    <%=link_to 'Booked Appointments', barber_path(current_user.id, appointment_type: 'booked_appointments') %><br>
-    <%=link_to 'Authorize Free Busy', '/auth/cronofy' %></br>
+</style>
+  <center>
+    <div class="picture-frame">
+      <%= image_tag('scissors.png', size: "150x100")%>
     </div>
+  <p class="badge"> Barber Code <span><%=@barber.unique_code%></span><p>
+  <div class="toobar">
+    <!-- <link_to 'Authorize Google Calendar', schedule_gcal_redirect_path ><br> -->
+    <%=link_to 'Appointments', barber_path(current_user.id, appointment_type: 'request_all'), class:'showbutton' %></br>
+    <%=link_to 'Guestbook', '#', class:'showbutton' %></br>
+    <%=link_to 'New Customers' , '#', class:'showbutton'%></br> <!-- Customers as a result of a discount url -->
+    <%=link_to 'Stats', '#', class:'showbutton'%></br> <!-- Tracking new customers , old customers, appointments this week over last week -->
+    <%=link_to 'Settings', '#', class: 'showbutton' %>
+    <%=link_to 'Authorize Free Busy', '/auth/cronofy', class:'showbutton' %></br>
+  </div>
+   </center>
+
+  <!--
     <div class='col-md-8'>
       <%if @clients == []%>
          <p>There are no appointments yet</p>
       <%else%>
       <% @clients.each do |appt|%>
         <div class="card">
-        <p><%=appt.schedule_day.strftime('%m-%A-%Y')%> @ <%= appt.start_time.strftime("%I:%M %P")%></p> 
+        <p><%=appt.schedule_day.strftime('%m-%A-%Y')%> @ <%= appt.start_time.strftime("%I:%M %P")%></p>
           <%= link_to 'Approve',  schedule_add_appointment_path(appt_id: appt.id) %> |
           <%= link_to 'Cancel',  schedule_cancel_appointment_path(appt_id: appt.id) %>
         </div>
         <%end%>
       <%end%>
- 
-    <div>
-  </div>
 
-</div>
+    <div>
+-->
+
+
+<!-- </div> -->
 
 <!-- TODO: fix the barber sign up flow and adding appointment process as to not need links-->
 <br><br>
 <%link_to 'Create New Barber Calendar', schedule_new_calendar_path, class: 'btn btn-primary' %><br><br>
 <%link_to 'Get Calendar Id', schedule_get_calendar_id_path, class: 'btn btn-primary'%><br><br>
-
-
-
-

@@ -1,7 +1,35 @@
 // Place all the styles related to the barber controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
- 
+
 .profile_headline {
-  margin-top: 100px;
+//margin-top: 100px;
+}
+.picture-frame {
+  margin-top: 75px;
+  margin-bottom: 0px;
+}
+.badge {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.toobar {
+  position: relative;
+  bottom: 330px;
+}
+
+@media (min-width: 385px) {
+  .showbutton {
+    color: black;
+    display: inline-block;
+    margin-bottom: 25px;
+    width: 200px;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    opacity: 0.5;
+    transition: color 0.3s ease-out, background-color 0.3s ease-out;
+  }
+
 }

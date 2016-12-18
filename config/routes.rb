@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'registration' }
   root to: "home#index"
-  resources :barber do  
+  resources :barber do
     resources :galleries, except: [:new, :create]
-    resources :appointments, only: [:index ,:new, :create]
+    resources :appointments, only: [:index ,:new, :create] do
+      get 'appointments/welcome'
+    end
     post 'referrals/question'
   end
-  resources :subscribers 
-  resources :schedule, only: [:new, :create]  
+  resources :subscribers
+  resources :schedule, only: [:new, :create]
   get 'schedule/gcal_redirect'
   get 'schedule/cutz_callback'
   get 'schedule/new_calendar'
@@ -18,14 +20,14 @@ Rails.application.routes.draw do
   get 'schedule/get_list'
 
   get "/auth/:provider/callback", to: "auth#callback"
-  resources :calendar 
-  
+  resources :calendar
+
   get 'galleries/new'
   post 'galleries/create'
 
   post 'barber/find'
 
- 
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

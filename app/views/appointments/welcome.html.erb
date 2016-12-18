@@ -1,0 +1,23 @@
+<style>
+  .welcome {
+
+    position: relative;
+    top: 100px;
+  }
+
+</style>
+
+<div class="welcome">
+<center>
+<h1>Thank You!</h1>
+<%= image_tag("clipper.jpg", size: "200x200")%>
+<h2> Your Cutz Appointment has been set.  </h2>
+</center>
+</div>
+
+<script>
+        var timer = setTimeout(function() {
+            window.location='localhost:3000/'
+            console.log("redirecting after")
+        }, 1000);
+</script>
