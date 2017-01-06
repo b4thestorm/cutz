@@ -1,0 +1,69 @@
+<style>
+  @media (min-width: 360px) {
+    .last {
+      position: relative;
+      height: 100px;
+    }
+  }
+</style>
+<body class="" ><!--"home col-xs-6 col-md-12"-->
+<center>
+  <div class="showbox">
+  <center>
+    <button type="button" class="showbutton btn-lg entrance" data-toggle="modal" data-target="#myModal">
+      Private Entrance
+    </button>
+</center>
+ </div>
+
+<div class="row bar">
+    <div class="col-xs-12  col-md-4">
+        1.
+       <h3> Pick your hairstyle</h3>
+       <p> Before you get to the chair, you can select the hairstyle you would like to get. </p>
+    </div>
+    <div class="col-xs-12 col-md-4">
+        2.
+       <h3> Pick a time</h3>
+       <p> Choose the time slot that is most convenient for you. Or get the next available time.</p>
+    </div>
+    <div class="col-xs-12 col-md-4">
+        <div>
+         3.
+        <h3> Get a Haircut</h3>
+        <p> Be reminded of your Appointment. Easily go and get your cut.</p>
+      </div>
+    </div>
+</div>
+<div class="footer col-xs-pull-12">
+  <center>
+    <br><br>
+    <h2>Make haircut appointments the easy way.</h2>
+    <p> For Barbers </p>
+  </center>
+</div>
+
+</center>
+<center>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Barber Code</h4>
+      </div>
+      <div class="modal-body">
+          <div class="input-group">
+          <%=form_tag barber_find_path do %>
+          <%=text_field_tag :barber_code, nil ,:placeholder => 'Enter your Barber Code' %>
+          <%=submit_tag 'Find', class: 'btn btn-primary'%>
+          <%end%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+</center>
+</body>

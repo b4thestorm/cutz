@@ -1,0 +1,19 @@
+
+
+<style>
+</style>
+<h1>
+  ----------
+</h1>
+<div class="container">
+<p class="badge "> Barber Code <span><%=@barber.unique_code%></span><p>
+<%=link_to 'Appointments', admin_barber_path(current_user.id, appointment_type: 'request_all')%></br>
+<%=link_to 'Guestbook', '#' %></br>
+<%=link_to 'New Customers' , '#'%></br>
+<%=link_to 'Stats', '#'%></br>
+<%=link_to 'Settings', '#'%>
+</div>
+
+<%= @clients.each do |x| %>
+<p>hello</p>
+<%end%>

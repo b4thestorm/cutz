@@ -5,10 +5,10 @@
     <div class="picture-frame">
       <%= image_tag('scissors.png', size: "150x100")%>
     </div>
-  <p class="badge"> Barber Code <span><%=@barber.unique_code%></span><p>
+  
   <div class="toobar">
     <!-- <link_to 'Authorize Google Calendar', schedule_gcal_redirect_path ><br> -->
-    <%=link_to 'Appointments', barber_path(current_user.id, appointment_type: 'request_all'), class:'showbutton' %></br>
+    <%=link_to 'Appointment', admin_barber_path(current_user.id, appointment_type: 'request_all'), class:'showbutton' %></br>
     <%=link_to 'Guestbook', '#', class:'showbutton' %></br>
     <%=link_to 'New Customers' , '#', class:'showbutton'%></br> <!-- Customers as a result of a discount url -->
     <%=link_to 'Stats', '#', class:'showbutton'%></br> <!-- Tracking new customers , old customers, appointments this week over last week -->

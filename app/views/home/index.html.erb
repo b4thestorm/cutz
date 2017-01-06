@@ -1,60 +1,187 @@
-<body class="home col-xs-6 col-md-12" >
-<center>
-  <div class="showbox">
-  <center>
-    <button type="button" class="showbutton btn-lg entrance" data-toggle="modal" data-target="#myModal">
-      Private Entrance
-    </button>
-  </center>
- </div>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="row bar">
-    <div class="col-md-4">
-        1.
-       <h3> Pick your hairstyle</h3>
-       <p> Before you get to the chair, you can select the hairstyle you would like to get. </p>
-    </div>
-    <div class="col-md-4">
-        2.
-       <h3> Pick a time</h3>
-       <p> Choose the time slot that is most convenient for you. Or get the next available time.</p>
+<head>
 
-    </div>
-    <div class="col-md-4">
-         3.
-        <h3> Get a Haircut</h3>
-        <p> Be reminded of your Appointment. Easily go and get your cut.</p>
-    </div>
-</div>
-<div class="footer">
-  <center>
-    <br><br>
-    <h2>Make haircut appointments the easy way.</h2>
-    <p> For Barbers </p>
-  </center>
-</div>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap Core CSS -->
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
-</center>
-<center>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel">Barber Code</h4>
-      </div>
-      <div class="modal-body">
-          <div class="input-group">
-          <%=form_tag barber_find_path do %>
-          <%=text_field_tag :barber_code, nil ,:placeholder => 'Enter your Barber Code' %>
-          <%=submit_tag 'Find', class: 'btn btn-primary'%>
-          <%end%>
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/creative.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">CUTZ</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                  <%if current_user%>
+                    <li><%=link_to 'Sign Out', destroy_user_session_path, data: {:confirm => 'Are you sure?'}, :method => :delete %></li>
+                    <li><%=link_to 'Account', barber_path(current_user.id) %></li>
+                  <%else%>
+                     <li><%= link_to 'Register', '/users/sign_up'%></li>
+                     <li><%=link_to 'Sign In', new_user_session_path %></li>
+                  <%end%>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">CUTZ</h2>
+                     <br><br>
+                    <hr class="light">
+                    <button type="button" class="btn btn-default btn-xl sr-button" data-toggle="modal" data-target="#myModal">
+                      Private Entrance
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">At Your Service</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
+                        1.
+                        <h3>Pick your hairstyle</h3>
+                        <p class="text-muted">Before you get to the chair, you can select the hairstyle you would like to get.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
+                        2.
+                        <h3>Pick a time</h3>
+                        <p class="text-muted">Choose the time slot that is most convenient for you. Or get the next available time</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
+                        3.
+                        <h3>Get a Haircut</h3>
+                        <p class="text-muted">Be reminded of your Appointment. Easily go and get your cut.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-heart text-primary sr-icons"></i>
+                        4.
+                        <h3>Stay Sharp</h3>
+                        <p class="text-muted">Women love it</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- <aside class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2>Free Download at Start Bootstrap!</h2>
+                <a href="http://startbootstrap.com/template-overviews/creative/" class="btn btn-default btn-xl sr-button">Download Now!</a>
+            </div>
+        </div>
+    </aside> -->
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Let's Get In Touch!</h2>
+                    <hr class="primary">
+                    <p>“A virtuos woman is not moved by big names and flamboyance, but only men of profound wisdom ,cleanliness and integrity move her.” </p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-phone fa-3x sr-contact"></i>
+                    <!-- <p>123-456-6789</p> -->
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x sr-contact"></i>
+                    <p><a href="mailto:your-email@your-domain.com">arnoldsander@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Barber Code</h4>
           </div>
+          <div class="modal-body">
+              <div class="input-group">
+              <%=form_tag barber_find_path do %>
+              <%=text_field_tag :barber_code, nil ,:placeholder => 'Enter your Barber Code' %>
+              <%=submit_tag 'Find', class: 'btn btn-primary'%>
+              <%end%>
+              </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</center>
+
+    <!-- jQuery -->
+    <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/creative.min.js"></script>
+
 </body>
+
+</html>

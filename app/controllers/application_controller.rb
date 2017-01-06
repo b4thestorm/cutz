@@ -17,11 +17,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    barber_path(resource.id)
+    admin_barber_path(resource.id)
   end
 
 private
-  
+
   def capture_referral
   session[:referral] = params[:referral] if params[:referral]
   end

@@ -2,22 +2,26 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'registration' }
   root to: "home#index"
-  resources :barber do
-    resources :galleries, except: [:new, :create]
-    resources :appointments, only: [:index ,:new, :create] do
-      get 'appointments/welcome'
-    end
-    post 'referrals/question'
+  namespace :admin do
+    resources :barber
+    resources :schedule, only: [:index, :new, :create]
+      get 'schedule/gcal_redirect'
+      get 'schedule/cutz_callback'
+      get 'schedule/new_calendar'
+      get 'schedule/add_appointment'
+      get 'schedule/cancel_appointment'
+      get 'schedule/get_calendar_id'
+      get 'schedule/get_list'
   end
-  resources :subscribers
-  resources :schedule, only: [:new, :create]
-  get 'schedule/gcal_redirect'
-  get 'schedule/cutz_callback'
-  get 'schedule/new_calendar'
-  get 'schedule/add_appointment'
-  get 'schedule/cancel_appointment'
-  get 'schedule/get_calendar_id'
-  get 'schedule/get_list'
+
+  resources :barber do
+      resources :galleries, except: [:new, :create]
+      resources :appointments, only: [:index ,:new, :create] do
+        get 'appointments/welcome'
+      end
+      post 'referrals/question'
+  end
+  # resources :subscribers
 
   get "/auth/:provider/callback", to: "auth#callback"
   resources :calendar
