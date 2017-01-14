@@ -3,15 +3,15 @@
 <head>
   <title>Cutz NYC</title>
   <link href='https://fonts.googleapis.com/css?family=Anonymous+Pro' rel='stylesheet' type='text/css'>
-  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%= favicon_link_tag "favicon.ico"%>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
   <%= csrf_meta_tags %>
    <style type="text/css">
-  
+
     .flash-message {
-      margin-top: 50px;  
+      margin-top: 50px;
     }
   </style>
 </head>
@@ -27,7 +27,7 @@
       </button>
       </div>
         <div class="collapse navbar-collapse navHeaderCollapse">
-          <ul class="nav navbar-nav navbar-right ">  
+          <ul class="nav navbar-nav navbar-right ">
             <%if current_user%>
               <li><%=link_to 'Sign Out', destroy_user_session_path, data: {:confirm => 'Are you sure?'}, :method => :delete %></li>
               <li><%=link_to 'Account', barber_path(current_user.id) %></li>
