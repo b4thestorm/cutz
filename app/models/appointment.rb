@@ -18,6 +18,9 @@ require 'chronic'
 belongs_to :barber, class_name: 'User', foreign_key: :barber_id
 
 
+ def google_free_busy
+ 
+ end 
 # rails date: Thu, 23 Jun 2016 02:30:00 UTC +00:00
 # google date: "2007-06-06T15:00:00.000Z"
 

@@ -9,16 +9,16 @@ class RegistrationController < Devise::RegistrationsController
   def create
     @user = User.new(sign_up_params)
     
-    token = params[:stripeToken]
-    email = params[:email]
-    customer = Stripe::Customer.create(
-        card:  token,
-        plan:  Stripe::Plans::PRIME,
-        email: email 
-     )
+    # token = params[:stripeToken]
+    # email = params[:email]
+    # customer = Stripe::Customer.create(
+    #     card:  token,
+    #     plan:  Stripe::Plans::PRIME,
+    #     email: email 
+    #  )
    
-    @user.subscribed = true
-    @user.stripeid = customer.id
+    # @user.subscribed = true
+    # @user.stripeid = customer.id
     @user.generate_unique_code 
     if @user.save 
         sign_in @user

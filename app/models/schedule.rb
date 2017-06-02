@@ -10,6 +10,22 @@ class Schedule < ActiveRecord::Base
 require 'net/http'
 
 
+  def google_free_busy
+   response = Net::HTTP::Post.new(URI('https://www.googleapis.com/calendar/v3/freeBusy'))
+   response.methods
+   
+   # , {
+   #        "timeMin": "2017-06-02T00:00:00+0000",
+   #        "timeMax": "2017-06-02T20:00:00+0000",
+   #        "timeZone": "america/new_york",
+   #         "items": [
+   #         {
+   #            "id": "arnold@usefomo.com"
+   #          }
+   #         ]
+   #       }.to_json )
+  end 
+  
   def add_appointment(appt_id, appt, barber)
     calendar_id = get_list(barber)
     calendar_id = barber.gcalendar_id

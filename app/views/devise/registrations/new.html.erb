@@ -24,22 +24,22 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div><br>
-  <div class="payment-errors"></div>
+ <!--  <div class="payment-errors"></div>
   <div class="field">
-    <%= label_tag :card_number, "Credit Card Number"%>
-    <%= text_field_tag :card_number, nil, name: nil, id: 'number' %>
+    <label_tag :card_number, "Credit Card Number"%>
+    < text_field_tag :card_number, nil, name: nil, id: 'number' %>
   </div>
   <br>
   <div class="field">
-    <%= label_tag :card_code, "Security Code on Card (CVV)"%>
-    <%= text_field_tag :card_code, nil, name: nil, id: 'cvv' %>
+    < label_tag :card_code, "Security Code on Card (CVV)"%>
+    < text_field_tag :card_code, nil, name: nil, id: 'cvv' %>
   </div>
   <br>
   <div class="field">
-    <%= label_tag :card_month, "Card Expiration" %>
-    <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "exp-month"} %><br><br>
-    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: 'exp-year'} %>
-  </div>
+    < label_tag :card_month, "Card Expiration" %>
+    < select_month nil, {add_month_numbers: true}, {name: nil, id: "exp-month"} %><br><br>
+    < select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: 'exp-year'} %>
+  </div> -->
   <br>
   <div class="actions">
     <%= f.submit "Sign up" , class: "btn btn-success"%>
@@ -50,40 +50,38 @@
 <%= render "devise/shared/links" %>
 </div>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-<script type="text/javascript"> Stripe.setPublishableKey(<%="#{ENV["STRIPE_PUBLISHABLE_KEY"]}"%>); </script>
+<script type="text/javascript"> // Stripe.setPublishableKey(<%="#{ENV["STRIPE_PUBLISHABLE_KEY"]}"%>); </script>
 <script>
 
-var stripeResponseHandler = function (status, response) {
- var $form = $("#new_user");
- if (response.error) {
-    console.log(response);
-    $form.find('.payment-errors').text(response.error.message);
-    $form.find("input[type=submit]").prop('disabled', false);
-  } else {
-    var token = response.id;
-    $('#stripe_card_token').val(token);
-    console.log(token);
-    $form[0].submit();
-  }
-};
+// var stripeResponseHandler = function (status, response) {
+//  var $form = $("#new_user");
+//  if (response.error) {
+//     console.log(response);
+//     $form.find('.payment-errors').text(response.error.message);
+//     $form.find("input[type=submit]").prop('disabled', false);
+//   } else {
+//     var token = response.id;
+//     $('#stripe_card_token').val(token);
+//     console.log(token);
+//     $form[0].submit();
+//   }
+// };
 
-jQuery(function($) {
-   $('#new_user').submit( function(event) {
-      event.preventDefault()
-      $(this).find("input[type=submit]").prop('disabled', true);  
+// jQuery(function($) {
+//    $('#new_user').submit( function(event) {
+//       event.preventDefault()
+//       $(this).find("input[type=submit]").prop('disabled', true);  
     
-      Stripe.card.createToken({
-        number: $("#number").val(),
-        cvc: $("#cvv").val(),
-        exp_month: $("#exp-month").val(),
-        exp_year: $("#exp-year").val()
+//       Stripe.card.createToken({
+//         number: $("#number").val(),
+//         cvc: $("#cvv").val(),
+//         exp_month: $("#exp-month").val(),
+//         exp_year: $("#exp-year").val()
 
-      }, stripeResponseHandler);
+//       }, stripeResponseHandler);
 
-      //Prevent the form from submitting with the default action;
-      return false
-  });
-});
-
-
+//       //Prevent the form from submitting with the default action;
+//       return false
+//   });
+// });
 </script>
